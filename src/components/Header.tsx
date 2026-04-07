@@ -21,7 +21,7 @@ export default function Header({
             🐼
           </div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-            Pandas Cheatsheet
+            My Pandas Cheatsheet
           </h1>
         </div>
 
