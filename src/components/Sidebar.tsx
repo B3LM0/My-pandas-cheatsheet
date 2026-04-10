@@ -1,4 +1,4 @@
-import { Download, Eye, Sparkles, Filter, Layers, Merge, BarChart3, Video as LucideIcon } from 'lucide-react';
+import { Download, Eye, Sparkles, Filter, Layers, Merge, BarChart3, Database, Video as LucideIcon } from 'lucide-react';
 import { Category } from '../types';
 
 interface SidebarProps {
@@ -16,6 +16,7 @@ const iconMap: Record<string, LucideIcon> = {
   Layers,
   Merge,
   BarChart3,
+  Database
 };
 
 export default function Sidebar({
