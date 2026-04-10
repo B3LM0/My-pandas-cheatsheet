@@ -855,4 +855,168 @@ BEGIN
 END;`,
     category: 'sql-basics',
   },
+    {
+    id: '92',
+    title: 'FOREIGN KEY ON DELETE CASCADE',
+    description: 'Delete child rows automatically when parent is deleted',
+    code: `CREATE TABLE orders (
+  id NUMBER PRIMARY KEY,
+  user_id NUMBER,
+  CONSTRAINT fk_user
+    FOREIGN KEY (user_id)
+    REFERENCES users(id)
+    ON DELETE CASCADE
+);`,
+    category: 'sql-basics',
+  },
+  {
+    id: '93',
+    title: 'FOREIGN KEY ON DELETE SET NULL',
+    description: 'Set foreign key to NULL when parent is deleted',
+    code: `CREATE TABLE orders (
+  id NUMBER PRIMARY KEY,
+  user_id NUMBER,
+  CONSTRAINT fk_user
+    FOREIGN KEY (user_id)
+    REFERENCES users(id)
+    ON DELETE SET NULL
+);`,
+    category: 'sql-basics',
+  },
+  {
+    id: '94',
+    title: 'DROP TABLE CASCADE CONSTRAINTS',
+    description: 'Drop table with all dependent constraints',
+    code: `DROP TABLE users CASCADE CONSTRAINTS;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '95',
+    title: 'CREATE TABLESPACE',
+    description: 'Create a permanent tablespace',
+    code: `CREATE TABLESPACE users_tbs
+DATAFILE 'users_tbs.dbf'
+SIZE 100M
+AUTOEXTEND ON
+NEXT 10M MAXSIZE UNLIMITED;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '96',
+    title: 'CREATE TEMPORARY TABLESPACE',
+    description: 'Create a temporary tablespace',
+    code: `CREATE TEMPORARY TABLESPACE temp_tbs
+TEMPFILE 'temp_tbs.dbf'
+SIZE 50M
+AUTOEXTEND ON;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '97',
+    title: 'CREATE USER',
+    description: 'Create a new Oracle user',
+    code: `CREATE USER ali
+IDENTIFIED BY password
+DEFAULT TABLESPACE users_tbs
+TEMPORARY TABLESPACE temp_tbs
+QUOTA UNLIMITED ON users_tbs;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '98',
+    title: 'DROP USER',
+    description: 'Delete user and all objects',
+    code: `DROP USER ali CASCADE;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '99',
+    title: 'CREATE PROFILE',
+    description: 'Create profile with resource limits',
+    code: `CREATE PROFILE user_profile LIMIT
+SESSIONS_PER_USER 2
+CPU_PER_SESSION 10000
+CONNECT_TIME 60
+FAILED_LOGIN_ATTEMPTS 3;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '100',
+    title: 'ASSIGN PROFILE TO USER',
+    description: 'Attach profile to a user',
+    code: `ALTER USER ali PROFILE user_profile;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '101',
+    title: 'GRANT SYSTEM PRIVILEGES',
+    description: 'Grant system privileges',
+    code: `GRANT CREATE SESSION, CREATE TABLE TO ali;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '102',
+    title: 'GRANT OBJECT PRIVILEGES',
+    description: 'Grant privileges on specific table',
+    code: `GRANT SELECT, INSERT, UPDATE
+ON users
+TO ali;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '103',
+    title: 'GRANT WITH ADMIN OPTION',
+    description: 'Allow user to grant privileges to others',
+    code: `GRANT CREATE TABLE TO ali WITH ADMIN OPTION;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '104',
+    title: 'GRANT WITH GRANT OPTION',
+    description: 'Allow user to grant object privileges',
+    code: `GRANT SELECT ON users TO ali WITH GRANT OPTION;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '105',
+    title: 'REVOKE SYSTEM PRIVILEGES',
+    description: 'Remove system privileges',
+    code: `REVOKE CREATE TABLE FROM ali;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '106',
+    title: 'REVOKE OBJECT PRIVILEGES',
+    description: 'Remove privileges on table',
+    code: `REVOKE SELECT, INSERT ON users FROM ali;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '107',
+    title: 'CREATE ROLE',
+    description: 'Create a role to manage privileges',
+    code: `CREATE ROLE manager_role;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '108',
+    title: 'GRANT ROLE TO USER',
+    description: 'Assign role to user',
+    code: `GRANT manager_role TO ali;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '109',
+    title: 'GRANT PRIVILEGES TO ROLE',
+    description: 'Assign privileges to a role',
+    code: `GRANT SELECT, INSERT ON users TO manager_role;`,
+    category: 'sql-basics',
+  },
+  {
+    id: '110',
+    title: 'REVOKE ROLE',
+    description: 'Remove role from user',
+    code: `REVOKE manager_role FROM ali;`,
+    category: 'sql-basics',
+  },
 ];
